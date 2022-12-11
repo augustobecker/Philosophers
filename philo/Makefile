@@ -6,7 +6,7 @@
 #    By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 19:19:25 by acesar-l          #+#    #+#              #
-#    Updated: 2022/12/08 20:10:36 by acesar-l         ###   ########.fr        #
+#    Updated: 2022/12/11 20:36:14 by acesar-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,13 @@ COMPILER 	=	gcc
 CFLAGS 		= 	-Wall -Wextra -Werror
 CLEANUP 	= 	rm -rf
 
-SRCS 		=	philosophers.c \
-				error.c
+ASSEMBLY	=	-S
+
+PTHREAD		=	-pthread
+
+SRCS 		=	philosophers.c	\
+				error.c			\
+				learning_pthreads.c
 
 GREEN		=	\033[0;32m
 RED			=	\033[0;31m
@@ -26,7 +31,7 @@ RESET		=	\033[0m
 all:			$(NAME)
 
 $(NAME):
-				@$(COMPILER) $(CFLAGS) $(SRCS) -o $(NAME)
+				@$(COMPILER) $(PTHREAD) $(CFLAGS) $(SRCS) -o $(NAME)
 				@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 clean:
@@ -37,4 +42,13 @@ fclean: 		clean
 
 re:				fclean $(NAME)
 
-.PHONY:			all clean fclean re
+run:			
+				./$(NAME) 1 2 3 4 5
+
+rerun:			re run
+
+assembly:		
+				$(COMPILER) $(ASSEMBLY) $(SRCS)
+				@echo "$(GREEN)Assembly files were created$(RESET)"
+
+.PHONY:			all clean fclean re run rerun assembly
