@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 20:39:27 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 14:15:00 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:22:27 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	takes_a_fork(t_philo *philo, t_fork *fork)
 
 int	eats(t_philo *philo)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = philo->data;
 	if (!dinner_must_go_on(philo, EATING))
@@ -39,6 +39,8 @@ int	eats(t_philo *philo)
 	philosopher_log(philo, EATING);
 	usleep(data->time_to_eat * MILLI_TO_MICROSECND);
 	gettimeofday(&philo->last_meal, NULL);
+	philo->left_fork->state = AVAILABLE;
+	philo->right_fork->state = AVAILABLE;
 	return (0);
 }
 
@@ -57,7 +59,7 @@ int	thinks(t_philo *philo)
 
 int	sleeps(t_philo *philo)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = philo->data;
 	if (!dinner_must_go_on(philo, SLEEPING))
@@ -73,7 +75,7 @@ int	sleeps(t_philo *philo)
 
 int	dies(t_philo *philo)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = philo->data;
 	philo->action = DIE;

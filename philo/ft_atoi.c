@@ -6,14 +6,14 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:40:51 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 14:36:00 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:14:32 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 long int	ft_atolongi(const char *str);
-int    		ft_atoi(const char *str);
+int			ft_atoi(const char *str);
 int			ft_isdigit(int argument);
 static int	ft_isblank(char a);
 static int	ft_error(int sign);
@@ -21,7 +21,7 @@ static int	ft_error(int sign);
 long int	ft_atolongi(const char *str)
 {
 	long int	nbr;
-	int	sign;
+	int			sign;
 
 	nbr = 0;
 	sign = 1;

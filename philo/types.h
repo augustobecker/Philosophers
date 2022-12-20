@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 23:27:44 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 03:44:33 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:38:21 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ typedef struct s_fork
 {
 	int			nbr;
 	t_state		state;
-} t_fork;
+}	t_fork;
 
 typedef struct s_data
 {
-    int				nbr_of_philo;
+	int				nbr_of_philo;
 	long int		time_to_die;
 	long int		time_to_eat;
 	long int		time_to_sleep;
@@ -52,7 +52,7 @@ typedef struct s_data
 	int				meals_per_philo;
 	t_bool			a_philo_died;
 	pthread_mutex_t	mutex;
-} t_data;
+}	t_data;
 
 typedef struct s_philo
 {
@@ -63,6 +63,6 @@ typedef struct s_philo
 	struct timeval	start;
 	struct timeval	last_meal;
 	t_data			*data;
-} t_philo;
+}	t_philo;
 
 #endif
