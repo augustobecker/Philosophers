@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 19:26:19 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 13:46:27 by acesar-l         ###   ########.fr       */
+/*   Created: 2022/12/20 04:04:34 by acesar-l          #+#    #+#             */
+/*   Updated: 2022/12/20 04:50:29 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int argc, char *const *argv)
+void clear_the_room(t_data *data, t_philo **chairs, t_fork **table);
+void clear_table(t_fork **table, int forks_nbr);
+
+void clear_the_room(t_data *data, t_philo **chairs, t_fork **table)
 {
-    t_data *data;
-    
-    arguments_validation(argc, argv);
-    data = create_data(argc, argv);
-    prepare_for_dinner(data);
-    free(data);
+    clear_table(table, data->nbr_of_philo);
+    free(chairs);
+}
+
+void clear_table(t_fork **table, int forks_nbr)
+{
+    int i;
+
+    i = 0;
+    while (i < forks_nbr)
+    {
+        free(table[i]);
+        i++;
+    }
+    free(table);
 }

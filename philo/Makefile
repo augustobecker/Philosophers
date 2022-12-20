@@ -6,23 +6,31 @@
 #    By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 19:19:25 by acesar-l          #+#    #+#              #
-#    Updated: 2022/12/11 20:36:14 by acesar-l         ###   ########.fr        #
+#    Updated: 2022/12/20 14:54:07 by acesar-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= 	philo
 
-COMPILER 	=	gcc
+COMPILER 	=	gcc -g
 CFLAGS 		= 	-Wall -Wextra -Werror
 CLEANUP 	= 	rm -rf
 
-ASSEMBLY	=	-S
-
 PTHREAD		=	-pthread
 
-SRCS 		=	philosophers.c	\
-				error.c			\
-				learning_pthreads.c
+SRCS 		=	philosophers.c			\
+				initial_validations.c	\
+				ft_atoi.c				\
+				create.c				\
+				prepare_for_dinner.c	\
+				start_dinner.c			\
+				philosopher_dinner.c	\
+				actions.c				\
+				clear.c					\
+				error.c					\
+				logs.c					\
+				the_dinner_must_go_on.c	\
+				time_utils.c
 
 GREEN		=	\033[0;32m
 RED			=	\033[0;31m
@@ -36,19 +44,10 @@ $(NAME):
 
 clean:
 				@$(CLEANUP) $(NAME)
+				@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 fclean: 		clean
-				@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re:				fclean $(NAME)
 
-run:			
-				./$(NAME) 1 2 3 4 5
-
-rerun:			re run
-
-assembly:		
-				$(COMPILER) $(ASSEMBLY) $(SRCS)
-				@echo "$(GREEN)Assembly files were created$(RESET)"
-
-.PHONY:			all clean fclean re run rerun assembly
+.PHONY:			all clean fclean re
