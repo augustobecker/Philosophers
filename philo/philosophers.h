@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 19:27:40 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/15 17:41:29 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/18 05:35:44 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,25 @@ int         ft_atoi(const char *str);
 
 //learning
 void learning_pthreads(void);
+
+//routine OK
+void	*dinner(void *philosopher);
+
+// time_utils OK
+void start_counting_time(t_philo *philo);
+long int get_elapsed_time(struct timeval *start);
+
+//log OK
+void philosopher_log(t_philo *philo, t_action action);
+
+//actions OK
+void	takes_a_fork(t_philo *philo, t_fork *fork);
+int		eats(t_philo *philo);
+int		thinks(t_philo *philo);
+int		sleeps(t_philo *philo);
+int		dies(t_philo *philo);
+
+// OK
+t_bool	dinner_must_go_on(t_philo *philo, t_action action);
 
 #endif

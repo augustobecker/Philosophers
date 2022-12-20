@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 23:27:44 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/16 04:49:46 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 03:44:33 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	long int		time_to_die;
 	long int		time_to_eat;
 	long int		time_to_sleep;
+	t_bool			count_meals;
 	int				meals_per_philo;
 	t_bool			a_philo_died;
 	pthread_mutex_t	mutex;
@@ -56,11 +57,11 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int				nbr;
-	int				timestamp;
-	t_action		action;
 	t_fork			*left_fork;
 	t_fork			*right_fork;
-	struct timeval	start_time;
+	t_action		action;
+	struct timeval	start;
+	struct timeval	last_meal;
 	t_data			*data;
 } t_philo;
 
