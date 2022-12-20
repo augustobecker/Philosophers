@@ -6,7 +6,7 @@
 #    By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 19:19:25 by acesar-l          #+#    #+#              #
-#    Updated: 2022/12/18 06:01:27 by acesar-l         ###   ########.fr        #
+#    Updated: 2022/12/20 04:35:07 by acesar-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,7 @@ ASSEMBLY	=	-S
 
 PTHREAD		=	-pthread
 
-SRCS 		=	philosophers.c			\
-				initial_validations.c	\
-				initialize.c			\
-				utils.c					\
-				actions.c				\
-				logs.c					\
-				philosopher_dinner.c	\
-				the_dinner_must_go_on.c	\
-				time_utils.c			\
-				error.c					\
-				learning_pthreads.c
-
+SRCS 		=	*.c
 GREEN		=	\033[0;32m
 RED			=	\033[0;31m
 RESET		=	\033[0m

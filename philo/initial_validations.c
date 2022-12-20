@@ -6,21 +6,25 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 23:38:04 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/12 01:24:57 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 05:01:16 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 void arguments_validation(int argc, char *const *argv);
+static void check_arguments_nbr(int argc);
+static void check_for_a_non_numeric_parameter(int argc, char *const *argv);
 static int	ft_isdigit(int argument);
 
 void arguments_validation(int argc, char *const *argv)
 {
-    int i;
-    int j;
+    check_arguments_nbr(argc);
+    check_for_a_non_numeric_parameter(argc, argv);
+}
 
-    i = 1;
+static void check_arguments_nbr(int argc)
+{
     if (argc < MIN_ARGS_NBR || argc > MAX_ARGS_NBR)
         error("Incorret number of arguments\n\n" RESET
             "usage:\n"
@@ -30,6 +34,14 @@ void arguments_validation(int argc, char *const *argv)
             "       [time to eat]\n" 
             "       [time to sleep]\n"
             "       [number of times each philosopher must eat] -- Optional");
+}
+
+static void check_for_a_non_numeric_parameter(int argc, char *const *argv)
+{
+    int i;
+    int j;
+
+    i = 1;
     while (i < argc)
     {
         j = 0;
