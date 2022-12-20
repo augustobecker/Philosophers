@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 03:51:14 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 03:58:35 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:27:31 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_data *create_data(int argc, char *const *argv)
     if (!data)
         error("malloc error");
     data->nbr_of_philo = ft_atoi(argv[1]);
-    data->time_to_die = ft_longatoi(argv[2]);
-    data->time_to_eat = ft_longatoi(argv[3]);
-    data->time_to_sleep = ft_longatoi(argv[4]);
+    data->time_to_die = ft_atolongi(argv[2]);
+    data->time_to_eat = ft_atolongi(argv[3]);
+    data->time_to_sleep = ft_atolongi(argv[4]);
     if (argc == MAX_ARGS_NBR)
     {
         data->count_meals = true;

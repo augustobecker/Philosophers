@@ -6,12 +6,13 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:01:46 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 03:42:22 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:42:12 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+void philosopher_log(t_philo *philo, t_action action);
 static void print_log(long int timestamp, int philo, char *message);
 
 void philosopher_log(t_philo *philo, t_action action)

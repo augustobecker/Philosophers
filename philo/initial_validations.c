@@ -6,16 +6,15 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 23:38:04 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 05:01:16 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:35:10 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void arguments_validation(int argc, char *const *argv);
+void        arguments_validation(int argc, char *const *argv);
 static void check_arguments_nbr(int argc);
 static void check_for_a_non_numeric_parameter(int argc, char *const *argv);
-static int	ft_isdigit(int argument);
 
 void arguments_validation(int argc, char *const *argv)
 {
@@ -52,9 +51,4 @@ static void check_for_a_non_numeric_parameter(int argc, char *const *argv)
                 error("Not a valid parameter. Use positive Integers only");
         i++;
     }
-}
-
-static int	ft_isdigit(int argument)
-{
-	return (argument >= '0' && argument <= '9');
 }

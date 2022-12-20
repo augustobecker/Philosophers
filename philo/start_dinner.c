@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 04:27:35 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/20 04:49:50 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:39:12 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static pthread_t   *alloc_threads(int nbr_of_threads)
         error("malloc error");
     return (threads);
 }
+
 static void launch_threads(pthread_t *thread, int thrds_nbr, t_philo **philo)
 {
     int i;
@@ -45,7 +46,8 @@ static void launch_threads(pthread_t *thread, int thrds_nbr, t_philo **philo)
     i = 0;
     while (i < thrds_nbr)
     {
-        pthread_create(&thread[i], NULL, &dinner, (void *)philo[i]);
+        if (pthread_create(&thread[i], NULL, &dinner, (void *)philo[i]))
+            error("couldn't create a thread");
         i++;
     }
 }
@@ -57,7 +59,8 @@ static void threads_end(pthread_t *thread, int threads_nbr)
     i = 0;
     while (i < threads_nbr)
     {
-        pthread_join(thread[i], NULL);
+        if (pthread_join(thread[i], NULL))
+            error("couldn't join a thread");
         i++;
     }
 }

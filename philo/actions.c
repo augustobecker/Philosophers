@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 20:39:27 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/18 02:37:48 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:15:00 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ int	dies(t_philo *philo)
 
 	data = philo->data;
 	philo->action = DIE;
+	pthread_mutex_lock(&data->mutex);
 	if (!data->a_philo_died)
 		philosopher_log(philo, DIE);
+	pthread_mutex_unlock(&data->mutex);
 	(*data).a_philo_died = true;
 	return (0);
 }

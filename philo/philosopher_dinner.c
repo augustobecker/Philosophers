@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 21:10:07 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/18 05:35:12 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:15:15 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	*dinner(void *philo)
 
 static t_bool are_both_forks_available(t_philo *philo)
 {
+    if (philo->left_fork == philo->right_fork)
+        return (false);
     if ((philo->left_fork->state == AVAILABLE)
         && (philo->right_fork->state == AVAILABLE))
         return (true);
@@ -79,6 +81,11 @@ static int    picks_up_both_forks(t_philo *philo)
 	t_data *data;
 
 	data = philo->data;
+    if (!dinner_must_go_on(philo, TAKING_FORK))
+	{
+		dies(philo);
+		return (1);
+	}
     pthread_mutex_lock(&data->mutex);
     takes_a_fork(philo, philo->left_fork);
     takes_a_fork(philo, philo->right_fork);
