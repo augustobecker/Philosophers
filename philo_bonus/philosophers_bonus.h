@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:32:04 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/22 18:33:02 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:27:51 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void		handle_sigint(int sig);
 
 void		prepare_for_dinner(t_philo *philo);
 void		start_dinner(t_philo *philo, sem_t *sem);
-void		*dinner(t_philo *philo, sem_t *table);
+int			dinner(t_philo *philo, sem_t *table);
+void		end_of_dinner(int *pid, int processes_nbr);
 
 t_philo		*create_philosopher(int argc, char *const *argv);
 

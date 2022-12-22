@@ -6,7 +6,7 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 03:15:27 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/21 10:02:03 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:04:33 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define SECND_TO_MILLISECND        1000
 # define MICRO_TO_MILLISECND        1000
 # define MILLI_TO_MICROSECND        1000
+
+# define ANY_CHILD_PROC             -1
 
 # define SEM_FORKS_FNAME            "forks"
 

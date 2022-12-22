@@ -6,19 +6,19 @@
 /*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 03:26:24 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/12/22 18:34:54 by acesar-l         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:27:22 by acesar-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers_bonus.h"
 
-void			*dinner(t_philo *philo, sem_t *table);
+int				dinner(t_philo *philo, sem_t *table);
 static void		put_both_forks_back_in_table(sem_t *sem);
 int				action(t_philo *philo, sem_t *sem, t_action action);
 static int		picks_up_both_forks(t_philo *philo, sem_t *table);
 static t_bool	is_philo_satieted(t_philo *philo, int meals);
 
-void	*dinner(t_philo *philosopher, sem_t *table)
+int	dinner(t_philo *philosopher, sem_t *table)
 {
 	int	meals;
 
@@ -33,14 +33,17 @@ void	*dinner(t_philo *philosopher, sem_t *table)
 		put_both_forks_back_in_table(table);
 		meals++;
 		if (is_philo_satieted(philosopher, meals))
-			break ;
+		{
+			free(philosopher);
+			return (0);
+		}
 		if (action(philosopher, table, SLEEPING))
 			break ;
 		if (action(philosopher, table, THINKING))
 			break ;
 	}
 	free(philosopher);
-	return (0);
+	return (1);
 }
 
 int	action(t_philo *philo, sem_t *sem, t_action action)
